@@ -229,3 +229,24 @@ ssh_logins
 ```
 
 This detection approach highlights suspicious behavioural chaining rather than isolated system events, improving alert confidence and reducing false positives.
+
+---
+
+## 🚨 Incident Severity Assessment
+
+Based on correlated behavioural evidence observed during the investigation, the activity was assessed as a **high-severity host compromise scenario.**
+
+Several factors contributed to this classification:
+
+- Successful external authentication followed by rapid privilege escalation  
+- Creation of additional privileged accounts indicating persistence intent  
+- Modification of authentication mechanisms enabling covert re-entry  
+- Interaction with sensitive system credential storage locations  
+- Evidence of system discovery and reconnaissance activity  
+- Archive creation suggesting potential data collection objectives  
+- Indicators of defence evasion behaviour aimed at reducing detection visibility  
+
+When evaluated collectively, these behaviours demonstrated attacker capability to maintain access, elevate privileges, and potentially impact system confidentiality and integrity.
+
+This severity assessment reflects real SOC prioritisation practices where behavioural correlation and attacker intent drive incident classification and response urgency.
+

@@ -112,3 +112,36 @@ Future detection enhancements could include:
 This investigation highlighted the importance of analysing attacker behaviour progression rather than focusing solely on isolated alerts.
 
 The lab strengthened practical skills in behavioural hunting, incident prioritisation, and detection engineering — key competencies for modern SOC analysts.
+
+---
+
+## 🔬 Example Behavioural Detection Logic (KQL)
+
+The following hunting logic demonstrates correlation of remote authentication activity with subsequent privilege escalation behaviour — a common indicator of potential host compromise.
+
+```kql
+let timeframe = 6h;
+
+let ssh_logins =
+Syslog
+| where TimeGenerated > ago(timeframe)
+| where ProcessName == "sshd"
+| where SyslogMessage contains "Accepted password"
+| extend Account = extract(@"for (\w+)", 1, SyslogMessage),
+         SourceIP = extract(@"from ([0-9.]+)", 1, SyslogMessage)
+| project LoginTime = TimeGenerated, Computer, Account, SourceIP;
+
+let privilege_activity =
+Syslog
+| where TimeGenerated > ago(timeframe)
+| where SyslogMessage has_any ("sudo", "session opened for user root", "su:")
+| project PrivTime = TimeGenerated, Computer, SyslogMessage;
+
+ssh_logins
+| join kind=inner privilege_activity on Computer
+| where PrivTime between (LoginTime .. LoginTime + 30m)
+| project LoginTime, PrivTime, Account, SourceIP, Computer, SyslogMessage
+| order by PrivTime desc
+```
+
+This detection approach highlights suspicious behavioural chaining rather than isolated system events, improving alert confidence and reducing false positives.

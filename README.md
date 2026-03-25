@@ -62,19 +62,51 @@ This correlation-driven approach improves detection fidelity compared to isolate
 
 ---
 
-## 🔎 Investigation Methodology
+The investigation followed a structured behavioural analysis workflow aligned with real SOC incident response practices.
 
-A structured SOC investigation workflow was followed:
+### Timeline Correlation
 
-1. Validate authentication source and login frequency  
-2. Expand timeline to identify post-authentication behavioural patterns  
-3. Analyse privilege escalation sessions and account manipulation events  
-4. Detect persistence mechanisms including cron execution and SSH key changes  
-5. Review discovery and reconnaissance commands executed on host  
-6. Identify potential credential access or data staging behaviour  
-7. Assess defence evasion indicators and potential attacker intent  
+Authentication telemetry was first reviewed to identify the initial point of access.  
+Subsequent system activity was then correlated to determine attacker actions performed after login.
 
-This methodology reflects real incident triage practices used to confirm host compromise.
+### Privilege Escalation Analysis
+
+Logs were examined for indicators of elevated privilege usage including:
+
+• sudo and root session activity  
+• administrative command execution  
+• account group membership modification  
+
+This helped determine whether the intrusion progressed beyond initial access.
+
+### Persistence Mechanism Identification
+
+The investigation focused on detecting techniques used to maintain long-term access:
+
+• Creation of new privileged service accounts  
+• Modification of SSH authorised_keys files  
+• Scheduled task (cron) configuration  
+
+These behaviours indicated deliberate attempts to establish sustained control.
+
+### Defence Evasion Indicators
+
+Evidence of attacker attempts to reduce visibility was analysed, including:
+
+• Command history clearing  
+• log artefact removal  
+• covert execution patterns  
+
+### Impact & Risk Evaluation
+
+By analysing correlated host telemetry, the investigation assessed:
+
+• attacker intent  
+• persistence level  
+• potential credential exposure  
+• likelihood of lateral movement risk  
+
+This structured methodology reflects real Tier-2 SOC investigative decision-making where contextual behavioural analysis is prioritised over isolated alert review.
 
 ---
 

@@ -62,6 +62,39 @@ This correlation-driven approach improves detection fidelity compared to isolate
 
 ---
 
+## 🧠 Detection Strategy & Behavioural Correlation Logic
+
+Rather than alerting on isolated system events, detection logic for this scenario focused on identifying a **sequence of attacker behaviours occurring within a defined timeframe.**
+
+This strategy aligns with modern SOC detection engineering practices where behavioural correlation improves signal confidence and reduces false positives.
+
+### Key Correlated Indicators
+
+The detection approach prioritised identifying patterns such as:
+
+- Successful external SSH authentication followed by rapid privilege escalation  
+- Creation or modification of privileged accounts shortly after login  
+- Persistence establishment through scheduled task execution or SSH key manipulation  
+- Interaction with sensitive credential storage indicating potential credential harvesting  
+- Archive creation or data staging activity suggesting collection objectives  
+- Attempts at defence evasion such as log manipulation or history clearing  
+
+### Detection Confidence Logic
+
+Individually, these events may represent legitimate administrative activity.  
+However, when observed as a **behavioural chain**, they provide high-confidence evidence of host compromise.
+
+Detection prioritisation therefore considered:
+
+- Event sequencing  
+- Temporal proximity between authentication and elevated actions  
+- Presence of persistence indicators  
+- Signs of attacker reconnaissance or credential access  
+
+This correlation-driven methodology reflects real Tier-2 SOC detection engineering workflows designed to balance visibility with alert fidelity.
+
+---
+
 The investigation followed a structured behavioural analysis workflow aligned with real SOC incident response practices.
 
 ### Timeline Correlation

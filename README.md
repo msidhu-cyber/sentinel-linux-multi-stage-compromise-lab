@@ -8,6 +8,25 @@ The objective was to replicate attacker behaviour across multiple phases of the 
 
 ---
 
+## 🧠 Investigation Focus
+
+This lab emphasises advanced host-based threat hunting and incident investigation techniques aligned with real SOC Tier-2 response activities.
+
+The investigation focused on identifying indicators of a **multi-stage intrusion**, including:
+
+- Correlation of authentication events with post-login behavioural anomalies  
+- Detection of privilege escalation patterns involving sudo and root session activity  
+- Identification of persistence mechanisms such as new privileged account creation and SSH key modification  
+- Recognition of defence evasion activity including log tampering and command history removal  
+- Analysis of network activity and system interaction consistent with attacker reconnaissance  
+- Monitoring for potential credential access behaviour targeting sensitive Linux system files  
+
+By analysing these signals within a structured timeline, the investigation aimed to determine attacker intent, persistence level, and potential risk to the broader environment.
+
+This approach mirrors real-world SOC investigative methodology where contextual behavioural analysis is prioritised over isolated alert-driven response.
+
+---
+
 ## 🧪 Simulated Attack Scenario
 
 Following successful remote SSH authentication from an external IP address, an attacker performed a sequence of post-compromise actions designed to establish persistence, escalate privileges, and prepare for potential credential theft and data exfiltration.

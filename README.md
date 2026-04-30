@@ -1,6 +1,6 @@
 # Multi-Stage Linux Host Compromise Investigation – Microsoft Sentinel
 
-## 🎯 Lab Objective
+## Lab Objective
 
 This project simulates and investigates a realistic multi-stage compromise of a cloud-hosted Linux virtual machine monitored using Microsoft Sentinel.
 
@@ -8,7 +8,7 @@ The objective was to replicate attacker behaviour across multiple phases of the 
 
 ---
 
-## 🧠 Investigation Focus
+## Investigation Focus
 
 This lab emphasises advanced host-based threat hunting and incident investigation techniques aligned with real SOC Tier-2 response activities.
 
@@ -27,7 +27,7 @@ This approach mirrors real-world SOC investigative methodology where contextual 
 
 ---
 
-## 🧪 Simulated Attack Scenario
+## Simulated Attack Scenario
 
 Following successful remote SSH authentication from an external IP address, an attacker performed a sequence of post-compromise actions designed to establish persistence, escalate privileges, and prepare for potential credential theft and data exfiltration.
 
@@ -46,7 +46,7 @@ Simulated attacker behaviours included:
 
 ---
 
-## 🛰️ Detection Engineering Approach
+## Detection Engineering Approach
 
 Behaviour-based hunting queries were developed in Microsoft Sentinel to correlate authentication telemetry with host activity indicators.
 
@@ -62,7 +62,7 @@ This correlation-driven approach improves detection fidelity compared to isolate
 
 ---
 
-## 🧠 Detection Strategy & Behavioural Correlation Logic
+## Detection Strategy & Behavioural Correlation Logic
 
 Rather than alerting on isolated system events, detection logic for this scenario focused on identifying a **sequence of attacker behaviours occurring within a defined timeframe.**
 
@@ -143,7 +143,7 @@ This structured methodology reflects real Tier-2 SOC investigative decision-maki
 
 ---
 
-## 🛡️ Incident Response Actions
+## Incident Response Actions
 
 Following confirmation of suspicious activity, simulated containment actions included:
 
@@ -155,7 +155,7 @@ Following confirmation of suspicious activity, simulated containment actions inc
 
 ---
 
-## 📊 Skills Demonstrated
+## Skills Demonstrated
 
 - Behaviour-based threat hunting in Microsoft Sentinel  
 - KQL detection engineering and log correlation  
@@ -167,7 +167,7 @@ Following confirmation of suspicious activity, simulated containment actions inc
 
 ---
 
-## 📌 MITRE ATT&CK Techniques Observed
+## MITRE ATT&CK Techniques Observed
 
 - T1078 – Valid Accounts  
 - T1548 – Abuse Elevation Control Mechanism  
@@ -179,7 +179,7 @@ Following confirmation of suspicious activity, simulated containment actions inc
 
 ---
 
-## 📈 Detection Improvement Opportunities
+## Detection Improvement Opportunities
 
 Future detection enhancements could include:
 
@@ -191,7 +191,7 @@ Future detection enhancements could include:
 
 ---
 
-## 🧠 SOC Analyst Reflection
+## SOC Analyst Reflection
 
 This investigation highlighted the importance of analysing attacker behaviour progression rather than focusing solely on isolated alerts.
 
@@ -199,7 +199,7 @@ The lab strengthened practical skills in behavioural hunting, incident prioritis
 
 ---
 
-## 🔬 Example Behavioural Detection Logic (KQL)
+## Example Behavioural Detection Logic (KQL)
 
 The following hunting logic demonstrates correlation of remote authentication activity with subsequent privilege escalation behaviour — a common indicator of potential host compromise.
 
@@ -232,7 +232,7 @@ This detection approach highlights suspicious behavioural chaining rather than i
 
 ---
 
-## 🚨 Incident Severity Assessment
+## Incident Severity Assessment
 
 Based on correlated behavioural evidence observed during the investigation, the activity was assessed as a **high-severity host compromise scenario.**
 
